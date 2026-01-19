@@ -13,7 +13,7 @@ const Header = ({ activeSection, scrollToSection }: HeaderProps) => {
           <div className="flex items-center gap-2">
             <div className="text-3xl">🪑</div>
             <span className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              ЭргоМебель
+              Режевское мебельное производство
             </span>
           </div>
           <div className="hidden md:flex gap-6">

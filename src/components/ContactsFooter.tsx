@@ -93,7 +93,7 @@ const ContactsFooter = () => {
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="text-4xl">🪑</div>
-            <span className="text-3xl font-bold">ЭргоМебель</span>
+            <span className="text-3xl font-bold">Режевское мебельное производство</span>
           </div>
           <p className="text-gray-400 mb-6">
             Производство школьной и офисной мебели с 2010 года
@@ -109,7 +109,7 @@ const ContactsFooter = () => {
               <Icon name="MessageCircle" size={24} />
             </Button>
           </div>
-          <p className="text-sm text-gray-500">© 2024 ЭргоМебель. Все права защищены.</p>
+          <p className="text-sm text-gray-500">© 2024 Режевское мебельное производство. Все права защищены.</p>
         </div>
       </footer>
     </>
