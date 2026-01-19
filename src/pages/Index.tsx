@@ -63,6 +63,58 @@ const Index = () => {
     },
   ];
 
+  const priceList = [
+    {
+      category: 'Школьная мебель',
+      items: [
+        { name: 'Парта одноместная регулируемая', price: '8 500', unit: 'шт' },
+        { name: 'Парта двухместная регулируемая', price: '14 200', unit: 'шт' },
+        { name: 'Стул ученический регулируемый', price: '3 200', unit: 'шт' },
+        { name: 'Стул ученический (фиксированный)', price: '2 800', unit: 'шт' },
+        { name: 'Доска маркерная настенная 120×90 см', price: '6 500', unit: 'шт' },
+        { name: 'Доска меловая настенная 120×90 см', price: '5 800', unit: 'шт' },
+        { name: 'Шкаф для учебных пособий', price: '18 900', unit: 'шт' },
+        { name: 'Стол учительский', price: '12 500', unit: 'шт' },
+        { name: 'Кресло учительское', price: '8 900', unit: 'шт' },
+      ],
+    },
+    {
+      category: 'Офисная мебель',
+      items: [
+        { name: 'Стол офисный Standard 120×60 см', price: '12 000', unit: 'шт' },
+        { name: 'Стол офисный Premium 140×70 см', price: '15 000', unit: 'шт' },
+        { name: 'Стол офисный Executive 180×80 см', price: '22 500', unit: 'шт' },
+        { name: 'Кресло офисное (эконом)', price: '6 800', unit: 'шт' },
+        { name: 'Кресло офисное (стандарт)', price: '11 200', unit: 'шт' },
+        { name: 'Кресло руководителя', price: '18 500', unit: 'шт' },
+        { name: 'Шкаф для документов 80×40×180 см', price: '12 000', unit: 'шт' },
+        { name: 'Тумба приставная 3 ящика', price: '5 400', unit: 'шт' },
+        { name: 'Стеллаж офисный 5 полок', price: '9 600', unit: 'шт' },
+      ],
+    },
+    {
+      category: 'Мебель для переговорных',
+      items: [
+        { name: 'Стол для переговоров на 6 человек', price: '28 000', unit: 'шт' },
+        { name: 'Стол для переговоров на 8-10 человек', price: '38 500', unit: 'шт' },
+        { name: 'Стул конференц-зала', price: '7 200', unit: 'шт' },
+        { name: 'Кресло конференц-зала', price: '9 800', unit: 'шт' },
+        { name: 'Доска для презентаций мобильная', price: '12 300', unit: 'шт' },
+      ],
+    },
+    {
+      category: 'Дополнительные услуги',
+      items: [
+        { name: 'Доставка по Москве (в пределах МКАД)', price: '2 500', unit: 'заказ' },
+        { name: 'Доставка за МКАД', price: '50', unit: 'км' },
+        { name: 'Сборка и монтаж (простая мебель)', price: '10%', unit: 'от стоимости' },
+        { name: 'Сборка и монтаж (сложная мебель)', price: '15%', unit: 'от стоимости' },
+        { name: 'Замер помещения специалистом', price: 'Бесплатно', unit: 'при заказе от 100 000 ₽' },
+        { name: 'Индивидуальное проектирование', price: 'от 15 000', unit: 'проект' },
+      ],
+    },
+  ];
+
   const calculatePrice = () => {
     const basePrices: Record<string, number> = {
       desk: 10000,
@@ -105,6 +157,7 @@ const Index = () => {
               {[
                 { id: 'home', label: 'Главная', icon: 'Home' },
                 { id: 'catalog', label: 'Каталог', icon: 'ShoppingBag' },
+                { id: 'pricelist', label: 'Прайс-лист', icon: 'FileText' },
                 { id: 'calculator', label: 'Калькулятор', icon: 'Calculator' },
                 { id: 'about', label: 'О компании', icon: 'Building2' },
                 { id: 'services', label: 'Услуги', icon: 'Wrench' },
@@ -264,6 +317,87 @@ const Index = () => {
               </div>
             </TabsContent>
           </Tabs>
+        </div>
+      </section>
+
+      <section id="pricelist" className="py-20 px-4 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4">Прайс-лист</h2>
+          <p className="text-center text-gray-600 mb-12 text-lg">
+            Актуальные цены на нашу продукцию и услуги
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {priceList.map((section, sectionIndex) => (
+              <Card
+                key={sectionIndex}
+                className="border-2 hover:shadow-xl transition-all animate-fade-in"
+                style={{ animationDelay: `${sectionIndex * 100}ms` }}
+              >
+                <CardHeader className="bg-gradient-to-r from-primary/10 to-accent/10">
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Icon name="List" className="text-primary" size={24} />
+                    {section.category}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="divide-y">
+                    {section.items.map((item, itemIndex) => (
+                      <div
+                        key={itemIndex}
+                        className="p-4 hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="flex justify-between items-start gap-4">
+                          <div className="flex-1">
+                            <p className="font-medium text-gray-900">{item.name}</p>
+                            <p className="text-sm text-gray-500 mt-1">{item.unit}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-lg font-bold text-primary whitespace-nowrap">
+                              {item.price} ₽
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <Card className="mt-8 border-2 border-accent bg-gradient-to-r from-accent/5 to-secondary/5">
+            <CardContent className="p-6">
+              <div className="flex items-start gap-4">
+                <Icon name="Info" className="text-accent mt-1" size={24} />
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Важная информация</h3>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>Цены указаны в рублях и включают НДС 20%</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>При заказе от 100 000 ₽ — скидка 5%, от 300 000 ₽ — скидка 10%</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>Цены действительны до конца текущего месяца</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>Возможно изготовление мебели по индивидуальным размерам</span>
+                    </li>
+                  </ul>
+                  <Button className="mt-4 bg-accent hover:bg-accent/90" onClick={() => scrollToSection('contacts')}>
+                    <Icon name="Download" className="mr-2" size={18} />
+                    Скачать полный прайс-лист
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
